@@ -1,5 +1,10 @@
 # 高德地图-地址区划同步
 
+## Dependencies
+* [Vertx]
+* [Netty]
+* [Log4j]
+
 ## 部署用法
 1 - 配置数据库，执行db.**.script.sql 创建表结构
 
