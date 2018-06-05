@@ -42,7 +42,7 @@ public class MainVerticle extends AbstractVerticle {
     private JsonObject config;
 
     @Override
-    public void start(Future<Void> future) throws Exception {
+    public void start(Future<Void> future) {
         Future<JsonObject> initFuture = initConfig();
         initFuture.setHandler(result -> {
             if (result.succeeded()) {//配置读取成功才启动服务和定时任务
@@ -77,9 +77,7 @@ public class MainVerticle extends AbstractVerticle {
     private void createUpdateJob() {
         long period = config.getLong("job.period", 1000L * 3600 * 24);
         LOGGER.info("Update job period:" + period + " milliseconds");
-        timerId = vertx.setPeriodic(period, id -> {
-            updateJob();
-        });
+        timerId = vertx.setPeriodic(period, id -> updateJob());
     }
 
     private void createHttpServer() {
