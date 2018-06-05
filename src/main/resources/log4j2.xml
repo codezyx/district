@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <properties>
+        <property name="APP_HOME">$${env:APP_HOME}</property>
+        <property name="LOG_HOME">${APP_HOME}/logs</property>
+        <property name="mainFilename">${LOG_HOME}/app.log</property>
+    </properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level - %msg%n"/>
+        </Console>
+        <RollingFile name="FileMain" fileName="${mainFilename}"
+                     filePattern="${LOG_HOME}/app_%date{yyyyMMdd}_%i.log.gz">
+            <PatternLayout>
+                <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %level - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <CronTriggeringPolicy schedule="0 0 0 * * ?" evaluateOnStartup="true"/>
+                <!--<TimeBasedTriggeringPolicy modulate="true" interval="24"/>-->
+                <SizeBasedTriggeringPolicy size="20 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileMain"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,15 @@
+{
+    "http.port": 8090,
+    "job.period": 3600000,
+    "api.host": "restapi.amap.com",
+    "api.port": 80,
+    "api.uri": "/v3/config/district",
+    "api.param": "?keywords=100000&subdistrict=3&key=842346d777965defa19a36e21b5f1f08",
+    "host": "10.113.2.201",
+    "port": 5432,
+    "maxPoolSize": 30,
+    "charset": "utf-8",
+    "database": "psbees",
+    "username": "psbees",
+    "password": "psbees"
+}
