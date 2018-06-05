@@ -237,7 +237,7 @@ public class MainVerticle extends AbstractVerticle {
     private Future<JsonObject> getRemoteApi() {
         Future<JsonObject> future = Future.future();
         WebClient client = WebClient.create(vertx);
-        String param = config.getString("api.param", "?keywords=100000&subdistrict=3&key=842346d777965defa19a36e21b5f1f08");
+        String param = config.getString("api.param");
         String host = config.getString("api.host", "restapi.amap.com");
         String requestURI = config.getString("api.uri", "/v3/config/district");
         client.get(config.getInteger("api.port", 80), host, requestURI + param).send(ar -> {
