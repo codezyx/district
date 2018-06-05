@@ -6,10 +6,7 @@ plugins {
 apply from: 'gradle/application.gradle'
 repositories {
     mavenLocal()
-    maven {
-        name 'nexus'
-        url 'http://m2.ys.com:8081/nexus/content/groups/yes-tech/'
-    }
+    mavenCentral()
     jcenter()
     maven { url "https://plugins.gradle.org/m2/" }
 }
