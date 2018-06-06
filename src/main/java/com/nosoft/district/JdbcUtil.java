@@ -11,6 +11,9 @@ public class JdbcUtil {
     private static SQLClient jdbcClient;
     private static JsonObject config;
 
+    private JdbcUtil() {
+    }
+
     public static JdbcUtil create(Vertx vertx, JsonObject config) {
         if (jdbcUtil == null) {
             JdbcUtil.config = config;
