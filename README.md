@@ -34,7 +34,8 @@ maxPoolSize 数据库链接池最大链接数
 ```java 
 gradlew installDist
 ```
-成功打包会在当前目录生成 ./build/install/district/ 
+成功打包会在当前目录生成 ./build/install/district/
+
 目录结构说明：
 * district/bin/ 可执行脚本目录
 * district/conf/ 配置文件目录
