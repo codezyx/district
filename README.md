@@ -1,5 +1,5 @@
 # 高德地图-地址区划同步
-定时同步高德地图开放平台提供的行政区划数据，保存到本地数据库，双表备份，保证同步期间不间断本地服务。
+定时同步[高德地图开放平台](http://lbs.amap.com/)提供的[行政区划](http://lbs.amap.com/api/webservice/guide/api/district)数据，保存到本地数据库，双表备份，保证同步期间不间断本地服务。
 ## 依赖
 * [Vert.x](https://github.com/eclipse/vert.x)
 * [Netty](https://github.com/netty/netty)
