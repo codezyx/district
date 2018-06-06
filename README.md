@@ -34,10 +34,24 @@ maxPoolSize 数据库链接池最大链接数
 ```java 
 gradlew installDist
 ```
+目录结构说明：
+* district/bin/ 可执行脚本目录
+* district/conf/ 配置文件目录
+* district/lib/ 依赖库文件(jar)目录
+* district/logs/ 日志文件目录
+
 4 - 进入 ./build/install/district/bin/
-执行 
+Windows系统双击或者CMD下运行
+```java
+district.bat
+```
+Linux系统调试时执行 
 ```java 
-district|district.sh
+./district
+```
+Linux系统后台运行时执行
+```java
+nohup ./district&
 ```
 5 - 访问 Rest 服务
 查询某地行政区域：
