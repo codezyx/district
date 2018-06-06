@@ -45,7 +45,7 @@ district|district.sh
 http://yourip:port/district/api/index?code=110100
 ```
 * port 默认8090，如果是本机调试可以访问 http://localhost:8090/district/api/index?code=110100
-* code 参数是上级区划编码，如果不传默认是返回全国所有省直辖市和自治区
+* code 参数是上级区划编码，如果不传默认是返回全国所有省、直辖市和自治区
 * JSON返回值，以北京城区(110100)为上级查询为例：
 ```java
 {
@@ -100,7 +100,7 @@ http://yourip:port/district/api/index?code=110100
   } ]
 }
 ```
-手动同步地址
+6 - 手动同步地址
 ```java
 http://yourip:port/district/api/update
 ```
