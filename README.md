@@ -13,7 +13,7 @@
 /src/main/resources/app.json
 ```
 ```java
-api.param 中的 key 修改成自己在高德地图中申请的 key
+api.param 中的 key 修改成自己在高德地图开放平台中申请的 key
 host 配置 PostgreSQL 数据库的 IP
 port 配置 PostgreSQL 数据库的端口
 database 配置 PostgreSQL 数据库
