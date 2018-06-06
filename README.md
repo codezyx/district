@@ -32,9 +32,9 @@ maxPoolSize 数据库链接池最大链接数
 
 3 - cd 到项目目录，执行打包命令 
 ```java 
-gradlew distZip
+gradlew installDist
 ```
-4 - 进入 ./build/distributions/district-1.0.0/bin/
+4 - 进入 ./build/install/district/bin/
 执行 
 ```java 
 district|district.sh
