@@ -120,7 +120,7 @@ http://yourip:port/district/api/index?code=110100
 ```java
 http://yourip:port/district/api/update
 ```
-访问这个地址会强制从高德地图开放平台同步最新行政区域数据到本地数据库
+访问这个地址会立即从高德地图开放平台同步最新行政区域数据到本地数据库
 
 ## Windows下增加CMD窗口标题
 
