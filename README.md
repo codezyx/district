@@ -1,18 +1,40 @@
 # 高德地图-地址区划同步
-
-## Dependencies
-* [Vertx]
-* [Netty]
-* [Log4j]
+定时同步高德地图开放平台提供的行政区划数据，保存到本地数据库，双表备份，保证同步期间不间断本地服务。
+## 依赖
+* [Vert.x](https://github.com/eclipse/vert.x)
+* [Netty](https://github.com/netty/netty)
+* [Log4j2](https://github.com/apache/logging-log4j2)
 
 ## 部署用法
-1 - 配置数据库，执行db.**.script.sql 创建表结构
+1 - 本项目使用 PostgreSQL 数据库，执行 db.postgresql.scripts.sql 创建表结构
 
-2 - cd 到项目目录，执行打包命令 
+2 - 修改配置文件
+```java
+/src/main/resources/app.json
+```
+```java
+api.param 中的 key 修改成自己在高德地图中申请的 key
+host 配置 PostgreSQL 数据库的 IP
+port 配置 PostgreSQL 数据库的端口
+database 配置 PostgreSQL 数据库
+username 和 password 配置数据库用户名和密码
+```
+通常配置完上面内容就可以打包运行了，下面给出其他配置说明：
+```java
+http.port 配置服务监听端口
+job.period 定时同步时间间隔，单位毫秒(ms)
+api.host 高德地图api域名
+api.port 高德地图api端口
+api.uri 高德地图api资源路径
+api.param 高德地图api参数
+maxPoolSize 数据库链接池最大链接数
+```
+
+3 - cd 到项目目录，执行打包命令 
 ```java 
 gradlew distZip
 ```
-3 - 进入 ./build/distributions/district-1.0.0/bin/
+4 - 进入 ./build/distributions/district-1.0.0/bin/
 执行 
 ```java 
 district|district.sh

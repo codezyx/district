@@ -139,7 +139,7 @@ public class MainVerticle extends AbstractVerticle {
                             cache.put(code, rows);
                             outJson(routingContext, new JsonObject().put("result", rows));
                         } else {
-                            getDistrictFromBackup(routingContext, code);
+                            getDistrictFromBackup(routingContext, code);//主表没查到，查备份表
                         }
                     } else {
                         outJson(routingContext, new JsonObject().put("result", Collections.emptyList()));
