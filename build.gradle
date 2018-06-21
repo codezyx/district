@@ -16,15 +16,14 @@ def vertxVersion = '3.5.0'
 sourceCompatibility = '1.8'
 
 dependencies {
-    compile "io.vertx:vertx-mysql-postgresql-client:$vertxVersion"
     compile "io.vertx:vertx-jdbc-client:$vertxVersion"
     compile "io.vertx:vertx-unit:$vertxVersion"
     compile "io.vertx:vertx-core:$vertxVersion"
     compile "io.vertx:vertx-web:$vertxVersion"
     compile "io.vertx:vertx-web-client:$vertxVersion"
-    compile "io.vertx:vertx-mysql-postgresql-client:$vertxVersion"
     compile 'io.vertx:vertx-config:3.4.1'
     compile 'io.netty:netty-all:4.1.15.Final'
+    compile 'com.h2database:h2:1.4.192'
     compile 'org.apache.logging.log4j:log4j-api:2.8.2'
     compile 'org.apache.logging.log4j:log4j-core:2.8.2'
     compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'

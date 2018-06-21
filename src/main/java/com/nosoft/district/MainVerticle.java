@@ -256,7 +256,7 @@ public class MainVerticle extends AbstractVerticle {
 
     private Future<Integer> updateDistrict(JsonObject obj) {
         Future<Integer> future = Future.future();
-        StringBuilder sql = new StringBuilder("insert into " + TABLE_NAME + "(id, adcode,name,parent,level,update_time,state) values ");
+        StringBuilder sql = new StringBuilder("insert into " + TABLE_NAME + "(id, adcode,name,parent,level,update_time) values ");
         JsonArray districts = obj.getJsonArray("districts");
         if (null != districts && districts.size() > 0) {
             buildSqlList(districts, null, sql);
@@ -287,7 +287,7 @@ public class MainVerticle extends AbstractVerticle {
 
     private Future<Integer> backupDistrict() {
         Future<Integer> future = Future.future();
-        String sql = "insert into " + TABLE_NAME_LAST + "(id, adcode,name,parent,level,update_time,state) select id, adcode,name,parent,level,update_time,state from " + TABLE_NAME;
+        String sql = "insert into " + TABLE_NAME_LAST + "(id, adcode,name,parent,level,update_time) select id, adcode,name,parent,level,update_time from " + TABLE_NAME;
         JdbcUtil jdbc = JdbcUtil.create(vertx, config);
         SQLClient client = jdbc.getJDBCClient();
         client.getConnection(conn -> {
@@ -361,7 +361,6 @@ public class MainVerticle extends AbstractVerticle {
             sql.append(",'").append(parentCode).append("'");
             sql.append(",'").append(obj.getString("level")).append("'");
             sql.append(",'").append(new Timestamp(System.currentTimeMillis())).append("'");
-            sql.append(",").append(0);
             sql.append("),");
             return sql.toString();
         }

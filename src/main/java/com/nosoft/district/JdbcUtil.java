@@ -2,36 +2,36 @@ package com.nosoft.district;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.asyncsql.PostgreSQLClient;
+import io.vertx.ext.jdbc.JDBCClient;
 import io.vertx.ext.sql.SQLClient;
 
 public class JdbcUtil {
 
-    private static JdbcUtil jdbcUtil;
-    private static SQLClient jdbcClient;
+    private static JdbcUtil instance;
+    private static SQLClient sqlClient;
     private static JsonObject config;
 
     private JdbcUtil() {
     }
 
     public static JdbcUtil create(Vertx vertx, JsonObject config) {
-        if (jdbcUtil == null) {
+        if (instance == null) {
             JdbcUtil.config = config;
             synchronized (JdbcUtil.class) {
-                if (jdbcUtil == null) {
-                    jdbcUtil = new JdbcUtil();
-                    jdbcUtil.init(vertx);
+                if (instance == null) {
+                    instance = new JdbcUtil();
+                    instance.init(vertx);
                 }
             }
         }
-        return jdbcUtil;
+        return instance;
     }
 
     private void init(Vertx vertx) {
-        jdbcClient = PostgreSQLClient.createShared(vertx, config);
+        sqlClient = JDBCClient.createShared(vertx, config);
     }
 
     public SQLClient getJDBCClient() {
-        return jdbcClient;
+        return sqlClient;
     }
 }
