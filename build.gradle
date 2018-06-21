@@ -1,14 +1,19 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '1.2.3'
 }
-apply from: 'gradle/application.gradle'
+
+jar {
+    exclude "**/*.xml","**/*.properties","**/*.json","**/*.sql"
+}
+
+applicationDistribution.from(sourceSets.main.resources) {
+    into "conf"
+}
+
 repositories {
-    mavenLocal()
-    mavenCentral()
+//    mavenCentral()
     jcenter()
-    maven { url "https://plugins.gradle.org/m2/" }
 }
 
 version = '1.0.0'
@@ -31,13 +36,6 @@ dependencies {
 
 mainClassName = 'com.nosoft.district.App'
 
-shadowJar {
-    classifier = 'fat'
-    mergeServiceFiles {
-        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
-    }
-}
-
 run {
     args = ['run', mainClassName, "--launcher-class=io.vertx.core.Launcher"]
 }
@@ -52,7 +50,17 @@ tasks.withType(AbstractCompile) {
     }
 }
 
+startScripts {
+    doLast {
+        def windowsScriptFile = file getWindowsScript()
+        def unixScriptFile = file getUnixScript()
+        windowsScriptFile.text = windowsScriptFile.text.replace('set CLASSPATH=%APP_HOME%' , $/set CLASSPATH=%APP_HOME%\conf;%APP_HOME%/$)
+        unixScriptFile.text = unixScriptFile.text.replace('CLASSPATH=$APP_HOME', 'CLASSPATH=$APP_HOME/conf:$APP_HOME')
+    }
+}
+
 javadoc {
     options?.encoding = 'UTF-8'
 //    failOnError = false
 }
+
