@@ -6,7 +6,11 @@
 * [Log4j2](https://github.com/apache/logging-log4j2)
 
 ## 部署用法
-1 - 本项目使用 H2 数据库，执行 db.h2.scripts.sql 创建表结构
+1 - 本项目使用 H2 数据库，默认已经有一个可用数据库文件
+```java
+/src/resources/district.h2.db
+```
+打包后会存放在 conf/ 目录下
 
 2 - 修改配置文件
 ```java
@@ -14,7 +18,8 @@
 ```
 ```java
 api.param 中的 key 修改成自己在高德地图开放平台中申请的 key
-url 配置 h2 数据库的路径
+
+url 配置 h2 数据库的路径，例如打包后放在 D 盘根目录，则配置成 jdbc:h2:D:/district/conf/district;MV_STORE=FALSE;MVCC=FALSE
 ```
 通常配置完上面内容就可以打包运行了，下面给出其他配置说明：
 ```java
