@@ -126,12 +126,4 @@ http://yourip:port/district/api/update
 ```
 访问这个地址会立即从高德地图开放平台同步最新行政区域数据到本地数据库
 
-## Windows下增加CMD窗口标题
-
-1.在第二行非注释行添加
-if "%TITLE%" == "" set TITLE=District
-
-2.找到"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %DISTRICT_OPTS%  -classpath "%CLASSPATH%" com.nosoft.district.App %CMD_LINE_ARGS%
-在前面添加
-start "%TITLE%"
 
